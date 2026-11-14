@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Health Tracker</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body class="dashboard-body">
+
+    <header class="dashboard-header">
+        <h2>Health Tracker</h2>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="period-tracker.html">Period Tracker</a>
+            <a href="health-tracker.html">Health Tracker</a>
+            <button id="logoutBtn">Logout</button>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+
+        <section class="welcome-section">
+            <h1>Welcome, <span id="userName">User</span>!</h1>
+            <p>Take care of your health, one day at a time.</p>
+        </section>
+
+        <section class="dashboard-summary">
+            <h2>Today's Health Summary</h2>
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <h3>Steps</h3>
+                    <p id="dashboardSteps">0</p>
+                    <span>Steps walked</span>
+                </div>
+
+                
+
+                <div class="summary-card">
+                    <h3>Body Mass Index</h3>
+                    <p id="dashboardBody Mass Index">0</p>
+                    <span>Body Mass Index</span>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Blood Pressure</h3>
+                    <p id="dashboardBP">Not recorded</p>
+                    <span>Latest reading</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="dashboard-links">
+            <h2>Manage Your Health</h2>
+
+            <div class="link-grid">
+
+                <div class="link-card">
+                    <h3>Period Tracker</h3>
+                    <p>Track your menstrual cycle and period dates.</p>
+                    <a href="period-tracker.html">Open Period Tracker</a>
+                </div>
+
+                <div class="link-card">
+                    <h3>Daily Health Tracker</h3>
+                    <p>Record your steps, water, sleep and blood pressure.</p>
+                    <a href="health-tracker.html">Open Health Tracker</a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="dashboard-footer">
+        <p>&copy; 2026 Health Tracker. All rights reserved.</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

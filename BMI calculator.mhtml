@@ -1,0 +1,103 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: file:///C:/Users/Dell/Desktop/Health-tracker/index.html
+Subject: BMI calculator
+Date: Sun, 01 Nov 2026 16:34:32 GMT
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--p6qQo9cvLVKd74C3CNSCwyRCcXcvYWaIpUYN5YdpdT----"
+
+
+------MultipartBoundary--p6qQo9cvLVKd74C3CNSCwyRCcXcvYWaIpUYN5YdpdT----
+Content-Type: text/html
+Content-ID: <frame-EC633B8466803ADCEB95D0354438A8BC@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/Users/Dell/Desktop/Health-tracker/index.html
+
+<!DOCTYPE html><html lang=3D"english"><head><meta http-equiv=3D"Content-Typ=
+e" content=3D"text/html; charset=3Dwindows-1252">
+    <meta charset=3D"utf 8">
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=
+=3D1.0">
+    <title>BMI calculator</title>
+    <link rel=3D"stylesheet" href=3D"file:///C:/Users/Dell/Desktop/Health-t=
+racker/style.css">
+
+</head>
+<body>
+<div class=3D"container">
+    <div class=3D"header">
+
+    <h2>BMI CALCULATOR</h2><h2>
+    </h2></div>
+<div class=3D"inputgroup">
+    <label for=3D"height">=20
+        Height(in cm):</label>
+        <input type=3D"number" id=3D"height" name=3D"height" placeholder=3D=
+"E.g.: 160">
+        <br>
+</div>
+<div class=3D"inputgroup">
+    <label for=3D"weight">
+        Weight(in kg):</label>
+    <input type=3D"number" id=3D"weight" name=3D"weight" placeholder=3D"E.g=
+.:45">
+<br>
+</div>
+
+    <button id=3D"calculate-btn" type=3D"button">Calculate BMI</button>
+
+<div id=3D"result-container" class=3D"" style=3D"display: block;">
+    <h3>Your BMI is:<span id=3D"bmi-value">25.8</span></h3>
+    <p id=3D"bmi-category">Category:Overweight</p><div id=3D"bmi-square" cl=
+ass=3D"bmi-square" style=3D"background-color: orange;"></div>
+    <p></p>
+</div></div>
+
+
+
+</body></html>
+------MultipartBoundary--p6qQo9cvLVKd74C3CNSCwyRCcXcvYWaIpUYN5YdpdT----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/Users/Dell/Desktop/Health-tracker/style.css
+
+@charset "windows-1252";
+
+body { background-color: lightpink; font-family: "edwardian script stc", cu=
+rsive; display: grid; justify-content: center; align-items: center; height:=
+ 100vh; margin: 0px; }
+
+.header { color: rgb(243, 239, 239); font-family: "charlemagne std"; font-w=
+eight: bold; font-size: 20px; background-color: rgb(245, 137, 153); padding=
+: 10px; border-radius: 10px; text-align: center; }
+
+.container { align-items: center; justify-content: center; background-color=
+: rgba(241, 231, 231, 0.906); padding: 20px; height: auto; width: 350px; bo=
+rder-radius: 15px; box-shadow: rgba(51, 49, 49, 0.5) 0px 0px 30px; }
+
+.inputgroup { font-family: "edwardian script stc", cursive; font-size: 20px=
+; color: rgb(26, 24, 24); height: 30px; padding: 18px 20px; margin-bottom: =
+25px; display: flex; flex-direction: column; align-items: flex-start; }
+
+input { height: 45px; margin-top: 5px; width: 100%; padding: 10px 15px; fon=
+t-family: "edwardian script stc", cursive; border-radius: 5px; font-size: 1=
+5px; box-sizing: border-box; border: 1px solid black; }
+
+.bmi-square { display: inline-block; width: 40px; height: 40px; margin-top:=
+ 10px; border-radius: 5px; border: 1px solid rgb(250, 107, 129); }
+
+button { background-color: rgb(250, 121, 140); color: rgb(243, 239, 239); f=
+ont-family: "edwardian script stc", cursive; font-size: 15px; padding: 10px=
+ 20px; border-width: medium; border-style: none; border-color: currentcolor=
+; border-image: none; border-radius: 5px; cursor: pointer; margin-top: 20px=
+; }
+
+button:hover { color: rgb(27, 2, 2); background-color: rgb(80, 70, 73); }
+
+.hidden { display: none; }
+
+#result-container { margin-top: 20px; text-align: center; background-color:=
+ rgb(250, 107, 129); border-radius: 10px; padding: 20px; height: auto; colo=
+r: rgb(248, 243, 243); width: 300px; }
+------MultipartBoundary--p6qQo9cvLVKd74C3CNSCwyRCcXcvYWaIpUYN5YdpdT------

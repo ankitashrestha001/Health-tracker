@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step Tracker</title>
+    <style>
+            body{
+                font-family:"charlemagne std";
+                background-color:lightpink;
+                font-size:20px;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+                margin:0;
+            }
+            .container{
+                height:auto;
+                width:400px;
+                padding:20px;
+                margin:auto;
+                background-color:rgb(104, 156, 130);
+                border-radius:10px;
+                box-shadow:0px 0px 0px rgb(236, 55, 85);
+                
+                
+            }
+            .header{
+                background-color:palevioletred;
+                border-radius:10px;
+                padding:6px;
+                margin-bottom:20px;
+                text-align:center;
+                color:white;
+                box-shadow:rgb(228, 89, 112);
+            }
+            button{
+                background-color:palevioletred;
+                color:white;
+                 border:none;
+                padding:10px 20px;
+                 border-radius:10px;
+                 cursor:pointer;
+                 padding:10px;
+                 border-top:10px;
+         }
+         button:hover{
+            background-color:grey;
+            color:antiquewhite;
+         }
+         .result ul {
+            list-style-type: none;
+            padding: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .result li {
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+            
+</style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+             <h2>Step Tracker</h2>
+            </div>
+            <div class="content">
+            Steps: <input type="number" id="steps" placeholder="Enter your steps for today"><br>
+            Date: <input type="date" id="date"><br>
+            Time: <input type="time" id="time">
+            </div>
+         <button id="Calculate">Calculate and save</button>
+          <div class="result" id="result"></div
+
+          </div>
+       </div>
+        <script>
+            const stepsinput=document.getElementById("steps");
+            const dateinput=document.getElementById("date");
+            const timeinput=document.getElementById("time");
+            const calculatebutton=document.getElementById("Calculate");
+            
+    const stepsInput = document.getElementById("steps");
+    const dateInput = document.getElementById("date");
+    const timeInput = document.getElementById("time");
+    const calculateButton = document.getElementById("Calculate");
+    const resultDiv = document.getElementById("result");
+
+    // 1. Load any previously saved entries when the page opens
+    let stepHistory = JSON.parse(localStorage.getItem("stepHistory")) || [];
+    displayHistory();
+
+    // 2. Listen for the button click
+    calculateButton.addEventListener("click", function() {
+        const steps = parseInt(stepsInput.value);
+        const date = dateInput.value;
+        const time = timeInput.value;
+
+        // Basic validation
+        if (!steps || steps <= 0 || !date || !time) {
+            alert("Please fill in valid steps, date, and time!");
+            return;
+        }
+
+        // 3. Perform calculations
+        const distanceKm = (steps * 0.000762).toFixed(2); // Avg step ≈ 0.762 meters
+        const calories = (steps * 0.04).toFixed(0);        // Avg burn ≈ 0.04 cal/step
+
+        // 4. Create an entry object and save it
+        const entry = {
+            steps: steps,
+            date: date,
+            time: time,
+            distance: distanceKm,
+            calories: calories
+        };
+
+        stepHistory.push(entry);
+        localStorage.setItem("stepHistory", JSON.stringify(stepHistory));
+
+        // 5. Update the screen and clear inputs
+        displayHistory();
+        stepsInput.value = "";
+    });
+
+    // Function to render the saved entries into the result div
+    function displayHistory() {
+        if (stepHistory.length === 0) {
+            resultDiv.innerHTML = "<p>No steps logged yet.</p>";
+            return;
+        }
+
+        let html = "<h3>Saved Logs:</h3><ul>";
+        
+        // Loop through entries in reverse so the newest is on top
+        stepHistory.slice().reverse().forEach(item => {
+            html += `
+                <li style="margin-bottom: 10px; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 5px; font-size: 16px;">
+                    <strong>${item.date} at ${item.time}</strong><br>
+                    Steps: ${item.steps} | Distance: ${item.distance} km | Calories: ${item.calories} kcal
+                </li>
+            `;
+        });
+        
+        html += "</ul>";
+        resultDiv.innerHTML = html;
+    }
+</script>
+            </script>
+    </body>
+    </html>
+       

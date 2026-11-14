@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Health Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-box">
+
+        <h1>Welcome Back</h1>
+        <p>Login to your Health Tracker account.</p>
+
+        <form id="loginForm" autocomplete="off">
+
+            <label for="loginEmail">Email Address</label>
+            <input
+                type="email"
+                id="loginEmail"
+                name="login-email"
+                placeholder="Enter your email"
+                autocomplete="off"
+                required
+            >
+
+            <label for="loginPassword">Password</label>
+            <input
+                type="password"
+                id="loginPassword"
+                name="login-password"
+                placeholder="Enter your password"
+                autocomplete="new-password"
+                required
+            >
+
+            <button type="submit" class="btn">Login</button>
+
+            <p id="loginMessage" class="message"></p>
+
+        </form>
+
+        <p>
+            Don't have an account?
+            <a href="signup.html">Sign Up</a>
+        </p>
+
+        <p>
+            <a href="admin-login.html">Admin Login</a>
+        </p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

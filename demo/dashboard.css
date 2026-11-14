@@ -1,0 +1,208 @@
+
+/* ==============================
+   DASHBOARD - PINK THEME
+============================== */
+
+.dashboard-body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fceaf1, #fff5f8);
+    color: #333;
+}
+
+/* Header */
+
+.dashboard-header {
+    background: #ad416b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.dashboard-header h2 {
+    margin: 0;
+}
+
+.dashboard-header nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard-header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.dashboard-header nav a:hover {
+    text-decoration: underline;
+}
+
+#logoutBtn {
+    background: white;
+    color: #ad416b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#logoutBtn:hover {
+    background: #f8e3ec;
+}
+
+/* Main Container */
+
+.dashboard-container {
+    width: 88%;
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+/* Welcome Section */
+
+.welcome-section {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(173, 65, 107, 0.12);
+}
+
+.welcome-section h1 {
+    color: #ad416b;
+    margin-top: 0;
+}
+
+.welcome-section p {
+    color: #666;
+}
+
+/* Summary Cards */
+
+.dashboard-summary h2,
+.dashboard-links h2 {
+    color: #ad416b;
+    margin-bottom: 20px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.summary-card {
+    background: white;
+    padding: 25px 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(173, 65, 107, 0.10);
+    border-bottom: 4px solid #ad416b;
+}
+
+.summary-card h3 {
+    color: #555;
+    margin-top: 0;
+}
+
+.summary-card p {
+    color: #ad416b;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 15px 0 8px;
+}
+
+.summary-card span {
+    color: #888;
+    font-size: 13px;
+}
+
+/* Manage Your Health */
+
+.dashboard-links {
+    margin-top: 40px;
+}
+
+.link-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.link-card {
+    background: white;
+    padding: 28px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(173, 65, 107, 0.10);
+}
+
+.link-card h3 {
+    color: #ad416b;
+    margin-top: 0;
+}
+
+.link-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.link-card a {
+    display: inline-block;
+    background: #ad416b;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.link-card a:hover {
+    background: #923456;
+}
+
+/* Footer */
+
+.dashboard-footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    margin-top: 40px;
+}
+
+/* Responsive Design */
+
+@media (max-width: 900px) {
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-header nav {
+        gap: 12px;
+    }
+
+    .summary-grid,
+    .link-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-container {
+        width: 92%;
+    }
+}
