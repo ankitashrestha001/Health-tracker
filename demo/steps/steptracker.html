@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step Tracker</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe6ee 0%, #ffd1e0 100%);
+            color: #4a353d;
+            display: flex;
+            justify-content: center;
+            padding: 30px 15px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(232, 111, 150, 0.2);
+            border: 2px solid #ffc2d6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff8fab, #fb6f92);
+            color: white;
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 22px;
+            box-shadow: 0 6px 15px rgba(251, 111, 146, 0.3);
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+       
+        .input-group {
+            margin-bottom: 14px;
+        }
+
+        .input-group label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #8c5265;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 2px solid #ffd6e4;
+            background-color: #fff9fb;
+            border-radius: 12px;
+            font-size: 15px;
+            color: #4a353d;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #fb6f92;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #ff8fab, #fb6f92);
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+            box-shadow: 0 5px 15px rgba(251, 111, 146, 0.35);
+
+        }
+
+        button:hover {
+            background:grey;
+           
+        }
+
+        
+        .output-card {
+            background-color: #fff5f8;
+            border: 1.5px solid #ffc2d6;
+            border-radius: 18px;
+            padding: 18px;
+            margin-top: 22px;
+            display: none; /* Hidden until first entry is saved */
+        }
+
+        .rating-badge {
+            display: inline-block;
+            background-color: #fb6f92;
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .note-text {
+            font-size: 14px;
+            color: #6e4755;
+            margin: 0 0 14px 0;
+            line-height: 1.4;
+        }
+
+       
+        .stats-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: white;
+            padding: 10px 8px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #ffe0eb;
+        }
+
+        .stat-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: #fb6f92;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #9e6b7c;
+            font-weight: 600;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background-color: #ffe0eb;
+            border-radius: 20px;
+            height: 20px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #ff8fab, #fb6f92);
+            height: 100%;
+            width: 0%;
+            color: white;
+            text-align: center;
+            font-size: 11px;
+            line-height: 20px;
+            font-weight: bold;
+            transition: width 0.5s ease;
+        }
+
+       
+        .section-title {
+            font-size: 15px;
+            color: #8c5265;
+            margin: 22px 0 10px 0;
+            font-weight: 700;
+        }
+
+        .graph-card {
+            background-color: #fff5f8;
+            border: 1.5px solid #ffc2d6;
+            border-radius: 18px;
+            padding: 15px;
+            text-align: center;
+        }
+
+       
+        .bar-chart-box {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 8px; 
+            height: 130px;
+            padding-top: 15px;
+        }
+
+        .bar-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bar {
+            width: 36px;
+            background: linear-gradient(180deg, #ff8fab, #fb6f92);
+            border-radius: 6px 6px 0 0;
+            transition: height 0.4s ease;
+        }
+
+        .bar-label {
+            font-size: 10px;
+            color: #8c5265;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        .log-card {
+            background-color: #fff9fb;
+            border: 1px solid #ffd6e4;
+            border-left: 5px solid #fb6f92;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>🌸 Step Tracker</h2>
+        </div>
+
+       
+        <div class="input-group">
+            <label>Steps Walked Today</label>
+            <input type="number" id="steps" placeholder="e.g. 8500">
+        </div>
+
+        <div class="input-group">
+            <label>Date</label>
+            <input type="date" id="date">
+        </div>
+
+        <div class="input-group">
+            <label>Time</label>
+            <input type="time" id="time">
+        </div>
+
+        <button id="saveBtn">Calculate & Save</button>
+        <button id="clearhistoryBtn" onclick="clearHistory()">Clear History</button>
+
+        <!-- PRETTY OUTPUT SUMMARY -->
+        <div class="output-card" id="latestSummary">
+            <span class="rating-badge" id="dayRating">Excellent!</span>
+            <p class="note-text" id="dayNote"></p>
+
+            <!-- 3 Clean Stat Boxes -->
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="stat-value" id="statSteps">0</span>
+                    <span class="stat-label">Steps</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value" id="statDist">0 km</span>
+                    <span class="stat-label">Distance</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value" id="statCal">0</span>
+                    <span class="stat-label">Calories</span>
+                </div>
+            </div>
+
+            <!-- Goal Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">0%</div>
+            </div>
+        </div>
+
+        <!-- BAR GRAPH SECTION -->
+        <div class="section-title">📊 Recent Steps Bar Graph</div>
+        <div class="graph-card">
+            <div class="bar-chart-box" id="barChartBox">
+                <p style="font-size: 13px; color: #9e6b7c; align-self: center;">Log steps to see your activity bars!</p>
+            </div>
+        </div>
+
+        <!-- SAVED HISTORY SECTION -->
+        <div class="section-title">📖 Saved History</div>
+        <div id="historyList"></div>
+    </div>
+
+    <script>
+        // STEP 1: Grab HTML elements
+        const stepsInput = document.getElementById("steps");
+        const dateInput = document.getElementById("date");
+        const timeInput = document.getElementById("time");
+        const saveBtn = document.getElementById("saveBtn");
+        const clearHistoryBtn = document.getElementById("clearhistoryBtn");
+
+        // STEP 2: Load saved logs from browser localStorage
+        let savedLogs = JSON.parse(localStorage.getItem("pinkStepLogs")) || [];
+        updateScreen();
+
+        // STEP 3: Save button click event
+        saveBtn.addEventListener("click", function() {
+            const steps = Number(stepsInput.value);
+            const date = dateInput.value;
+            const time = timeInput.value;
+
+            if (steps <= 0 || date === "" || time === "") {
+                alert("Please fill in steps, date, and time!");
+                return;
+            }
+
+            // Calculate distance & calories
+            const distanceKm = (steps * 0.000762).toFixed(2);
+            const calories = Math.round(steps * 0.04);
+
+            // Pick rating & short note
+            let rating = "";
+            let note = "";
+
+            if (steps < 5000) {
+                rating = "Sedentary Day";
+                note = "A quiet day! Try going for a short 15-minute walk tomorrow.";
+            } else if (steps < 10000) {
+                rating = "Moderately Active";
+                note = "Nice work! You are getting very close to your 10,000-step goal.";
+            } else {
+                rating = "Excellent! ✨";
+                note = "Amazing energy! You crushed your daily step goal today.";
+            }
+
+            // Save new entry object
+            const newEntry = {
+                steps: steps,
+                date: date,
+                time: time,
+                distance: distanceKm,
+                calories: calories,
+                rating: rating,
+                note: note
+            };
+
+            savedLogs.push(newEntry);
+            localStorage.setItem("pinkStepLogs", JSON.stringify(savedLogs));
+
+            updateScreen();
+            stepsInput.value = "";
+        });
+        function clearHistory(){
+            if(confirm("Are you sure you want to clear all saved history? This action cannot be undone.")){
+                localStorage.removeItem("pinkStepLogs");
+                savedLogs = [];
+                updateScreen();
+            }
+            }
+        
+
+        // STEP 4: Update Summary Card, Bar Graph, and History List
+        function updateScreen() {
+            if (savedLogs.length === 0) return;
+
+            const latest = savedLogs[savedLogs.length - 1];
+
+            // 1. Update Pretty Summary Card
+            document.getElementById("latestSummary").style.display = "block";
+            document.getElementById("dayRating").textContent = latest.rating;
+            document.getElementById("dayNote").textContent = latest.note;
+            document.getElementById("statSteps").textContent = latest.steps;
+            document.getElementById("statDist").textContent = latest.distance + " km";
+            document.getElementById("statCal").textContent = latest.calories + " kcal";
+
+            // Update Progress Bar
+            let percent = Math.min(Math.round((latest.steps / 10000) * 100), 100);
+            const progressBar = document.getElementById("progressBar");
+            progressBar.style.width = percent + "%";
+            progressBar.textContent = percent + "% of 10k Goal";
+
+            // 2. Draw Bar Graph (Last 6 entries with close spacing)
+            drawBarGraph();
+
+            // 3. Update History List
+            const historyList = document.getElementById("historyList");
+            historyList.innerHTML = "";
+
+            savedLogs.slice().reverse().forEach(function(item) {
+                const card = document.createElement("div");
+                card.className = "log-card";
+                card.innerHTML = `
+                    <strong style="color:#d6456b;">${item.date} at ${item.time} • ${item.rating}</strong><br>
+                    <span>Steps: <b>${item.steps}</b> | ${item.distance} km | ${item.calories} kcal</span><br>
+                    <em style="color:#8c5265;">"${item.note}"</em>
+                `;
+                historyList.appendChild(card);
+            });
+        }
+
+        // Helper function to draw the bar graph dynamically
+        function drawBarGraph() {
+            const barChartBox = document.getElementById("barChartBox");
+            const recent = savedLogs.slice(-6); // Show last 6 entries
+            barChartBox.innerHTML = ""; // Clear previous bars
+
+            const maxHeight = 90; // Max pixel height for 10,000 steps
+
+            recent.forEach(function(item) {
+                // Calculate bar height proportionally (10,000 steps = 90px tall)
+                let barHeight = (item.steps / 10000) * maxHeight;
+                if (barHeight > maxHeight) barHeight = maxHeight; // Cap at max height
+                if (barHeight < 10) barHeight = 10; // Minimum visible height
+
+                // Create column wrapper
+                const column = document.createElement("div");
+                column.className = "bar-column";
+
+                // Create the bar element
+                const bar = document.createElement("div");
+                bar.className = "bar";
+                bar.style.height = barHeight + "px";
+                bar.title = `${item.steps} steps on ${item.date}`; // Tooltip on hover
+
+                // Create short date label underneath (e.g., "11-12")
+                const label = document.createElement("div");
+                label.className = "bar-label";
+                label.textContent = item.date.slice(5); 
+
+                column.appendChild(bar);
+                column.appendChild(label);
+                barChartBox.appendChild(column);
+            });
+        }
+    </script>
+</body>
+</html>
