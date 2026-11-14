@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Display Body Mass Index
         document.getElementById("dashboardBody Mass Index").textContent =
-            todayRecord.Body Mass Index ?? 0;
+            todayRecord["Body Mass Index"] ?? 0;
 
         // Display blood pressure
         const bp = todayRecord.bloodPressure;

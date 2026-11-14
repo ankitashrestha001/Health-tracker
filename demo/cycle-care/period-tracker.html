@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CycleCare student project for simple menstrual cycle tracking.">
+  <title>CycleCare | Menstrual Cycle Tracker</title>
+  <link rel="stylesheet" href="pstyle.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="CycleCare home"><span class="brand-mark">✿</span><span>CycleCare</span></a>
+    <button class="menu-button" id="menuButton" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav id="mainNav">
+      <a class="nav-link active" href="#home">Home</a>
+      <a class="nav-link" href="#dashboard">Dashboard</a>
+      <a class="nav-link" href="#tracker">Track cycle</a>
+      <a class="nav-link" href="#history">History</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero page-section" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">YOUR CYCLE, MADE SIMPLE</span>
+        <h1>Understand your cycle.<br><span>Care for yourself.</span></h1>
+        <p>Keep period dates, note symptoms, and see a simple estimate of your cycle phase in one place.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#tracker">Get started <span aria-hidden="true">→</span></a>
+          <a class="btn ghost" href="#dashboard">View dashboard</a>
+        </div>
+        <div class="feature-row">
+          <span>📅 Track dates</span><span>💗 Log symptoms</span><span>🌱 Learn your cycle</span>
+        </div>
+        <p class="notice">Your entries stay in this browser on this device. This demo has no online account or cloud backup.</p>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a person holding a calendar" role="img">
+        <div class="sun-orb"></div><div class="plant plant-left">❧</div><div class="plant plant-right">❧</div>
+        <div class="person">
+          <div class="hair"></div><div class="face"><span class="eye eye-left"></span><span class="eye eye-right"></span><span class="smile"></span></div>
+          <div class="neck"></div><div class="body-shirt"></div><div class="calendar-card"><b>♡</b><span>▦</span><small>MY CYCLE</small></div>
+        </div>
+        <div class="floating-heart">♥</div>
+      </div>
+    </section>
+
+    <section class="page-section" id="dashboard">
+      <div class="section-heading">
+        <div><span class="eyebrow">YOUR PERSONAL SPACE</span><h2>Cycle dashboard</h2><p class="muted">A quick overview based on the dates you record.</p></div>
+        <span class="date-pill" id="todayLabel"></span>
+      </div>
+      <div class="dashboard-grid">
+        <article class="card phase-card">
+          <div class="card-top"><div><span class="muted small-label">CURRENT CYCLE</span><h3 id="cycleDay">No cycle logged</h3></div><span class="phase-icon">♡</span></div>
+          <div class="progress-track"><div class="progress-fill" id="cycleProgress"></div></div>
+          <h3 id="phaseName">Add your period start date</h3>
+          <p id="phaseDescription">Your estimated cycle phase will appear here after you save a period date.</p>
+          <div class="next-date"><span>Next period estimate</span><strong id="nextPeriod">Not available yet</strong><small id="daysUntil"></small></div>
+          <p class="small-muted">Estimates can be inaccurate, especially for irregular cycles.</p>
+        </article>
+        <article class="card quick-card">
+          <span class="eyebrow">CYCLE AT A GLANCE</span><h3>Latest saved details</h3>
+          <div class="stat-row"><span>Last period start</span><strong id="lastStart">—</strong></div>
+          <div class="stat-row"><span>Usual cycle length</span><strong id="usualCycle">28 days</strong></div>
+          <div class="stat-row"><span>Period length</span><strong id="usualPeriod">5 days</strong></div>
+          <a href="#tracker" class="text-link">Update your tracker →</a>
+        </article>
+      </div>
+      <div class="phase-guide">
+        <div class="section-heading"><div><span class="eyebrow">CYCLE GUIDE</span><h2>Common phases</h2></div></div>
+        <div class="phase-grid">
+          <article class="phase-tile rose"><span class="tile-emoji">💧</span><h3>Menstruation</h3><p>Period bleeding days. Record the dates that apply to you.</p></article>
+          <article class="phase-tile violet"><span class="tile-emoji">🌱</span><h3>Follicular</h3><p>The phase leading up to ovulation; it overlaps with the start of the cycle.</p></article>
+          <article class="phase-tile yellow"><span class="tile-emoji">☀️</span><h3>Ovulation</h3><p>Timing varies. A calendar estimate cannot confirm ovulation.</p></article>
+          <article class="phase-tile teal"><span class="tile-emoji">🌙</span><h3>Luteal</h3><p>The time after ovulation until the next period begins.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section two-column" id="tracker">
+      <article class="card">
+        <span class="eyebrow">ADD A RECORD</span><h2>Track your period</h2>
+        <p class="muted">Enter the first day of your most recent period.</p>
+        <form id="cycleForm" class="stack-form">
+          <div class="field"><label for="startDate">Period start date</label><input type="date" id="startDate" required></div>
+          <div class="form-two">
+            <div class="field"><label for="cycleLength">Usual cycle length</label><input type="number" id="cycleLength" min="21" max="45" value="28" required><small>21–45 days</small></div>
+            <div class="field"><label for="periodLength">Period length</label><input type="number" id="periodLength" min="2" max="10" value="5" required><small>2–10 days</small></div>
+          </div>
+          <div class="field"><label for="cycleNotes">Note (optional)</label><input type="text" id="cycleNotes" maxlength="200" placeholder="e.g. light flow"></div>
+          <button class="btn primary" type="submit">Save period date</button>
+          <p class="form-message" id="cycleMessage" role="status"></p>
+        </form>
+      </article>
+      <article class="card">
+        <span class="eyebrow">DAILY NOTES</span><h2>Log a symptom</h2>
+        <p class="muted">Optional notes can help you notice patterns over time.</p>
+        <form id="symptomForm" class="stack-form">
+          <div class="field"><label for="symptomDate">Date</label><input type="date" id="symptomDate" required></div>
+          <div class="field"><label for="symptom">Symptom or mood</label><select id="symptom" required><option value="">Choose one</option><option>Cramps</option><option>Headache</option><option>Bloating</option><option>Tiredness</option><option>Mood changes</option><option>Acne</option><option>No symptoms</option><option>Other</option></select></div>
+          <div class="field"><label for="symptomNotes">Notes (optional)</label><textarea id="symptomNotes" rows="3" maxlength="500" placeholder="How are you feeling?"></textarea></div>
+          <button class="btn secondary" type="submit">Save symptom</button>
+          <p class="form-message" id="symptomMessage" role="status"></p>
+        </form>
+      </article>
+    </section>
+
+    <section class="page-section" id="history">
+      <div class="section-heading">
+        <div><span class="eyebrow">YOUR RECORDS</span><h2>Tracking history</h2><p class="muted">Period dates and symptom notes saved in this browser.</p></div>
+        <button class="btn danger-outline" id="clearDataButton" type="button">Clear all data</button>
+      </div>
+      <article class="card history-card">
+        <h3>Period records</h3>
+        <div class="table-scroll"><table><thead><tr><th>Start date</th><th>Cycle length</th><th>Period length</th><th>Note</th><th>Action</th></tr></thead><tbody id="cycleHistory"></tbody></table></div>
+        <p id="emptyCycles" class="muted empty-state">No period dates saved yet.</p>
+      </article>
+      <article class="card history-card">
+        <h3>Symptom and mood notes</h3>
+        <div class="table-scroll"><table><thead><tr><th>Date</th><th>Symptom</th><th>Notes</th><th>Action</th></tr></thead><tbody id="symptomHistory"></tbody></table></div>
+        <p id="emptySymptoms" class="muted empty-state">No symptoms recorded yet.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">✿</span> CycleCare</a><p>Made as a Class 12 student project using HTML, CSS, and JavaScript.</p><p class="notice">Educational use only. Cycle dates and phases are estimates, not medical advice or contraception.</p></footer>
+  <dialog id="confirmDialog" class="confirm-dialog"><p id="confirmText">Are you sure?</p><div class="dialog-actions"><button class="btn ghost" id="cancelConfirm" type="button">Cancel</button><button class="btn danger" id="acceptConfirm" type="button">Continue</button></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
